@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Pedido</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body class="tema-claro">
+    <div class="container">
+        <h2>Formulário de Pedido</h2>
+        <form id="pedidoForm">
+            <label for="nomeCliente">Nome do Cliente:</label>
+            <input type="text" id="nomeCliente" name="nomeCliente" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required>
+
+            <label for="dataEntrega">Data Prevista de Entrega:</label>
+            <input type="date" id="dataEntrega" name="dataEntrega" required>
+
+            <button type="button" onclick="imprimirPedido()">Imprimir Recibo</button>
+        </form>
+
+        <div id="resultadoPedido"></div>
+    </div>
+
+    <script src="main2.js"></script>
+</body>
+</html>
