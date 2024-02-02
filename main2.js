@@ -2,6 +2,13 @@ function imprimirPedido() {
     var nomeCliente = document.getElementById('nomeCliente').value;
     var telefone = document.getElementById('telefone').value;
     var dataEntrega = document.getElementById('dataEntrega').value;
+    var desc = document.getElementById('desc').value;
+    var pago = document.getElementById('pago').value;
+    let data = new Date();
+    let dataFormatada = ((data.getDate())) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
+
+    
+
     var brDate = dataEntrega.split('-').reverse().join('/');
 
     // Informações da empresa
@@ -35,17 +42,21 @@ function imprimirPedido() {
                                 margin: 2rem;
                             }
                           </style>
-                          <center>
+                          
                                 <div style='font-weight: bolder;'>
                               <div class="nome-empresa">${nomeEmpresa}</div>
                               <div class="telefone-empresa">${telefoneEmpresa}</div>
                               <div class="endereco-empresa">${enderecoEmpresa}</div>
+                              
+                              <div class="endereco-empresa">${dataFormatada}</div>
+                              <div class="pago">${pago}</div>
                               <h3>Recibo de Pedido:</h3>
                               </div>
                               <p><strong>Nome do Cliente:</strong> ${nomeCliente}</p>
                               <p><strong>Telefone:</strong> ${telefone}</p>
                               <p><strong>Data Prevista de Entrega:</strong> ${brDate}</p>
-                          </center>`;
+                              <div class="endereco-empresa">${desc}</div>
+                          `;
 
     // Criar um elemento iframe
     var iframe = document.createElement('iframe');
