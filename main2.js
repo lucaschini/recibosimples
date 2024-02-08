@@ -1,23 +1,33 @@
 function imprimirPedido() {
-    var nomeCliente = document.getElementById('nomeCliente').value;
-    var telefone = document.getElementById('telefone').value;
-    var dataEntrega = document.getElementById('dataEntrega').value;
-    var desc = document.getElementById('desc').value;
-    var pago = document.getElementById('pago').value;
-    let data = new Date();
-    let dataFormatada = ((data.getDate())) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
+  var nomeCliente = document.getElementById("nomeCliente").value;
+  var telefone = document.getElementById("telefone").value;
+  var dataEntrega = document.getElementById("dataEntrega").value;
+  var desc = document.getElementById("desc").value;
+  var acertar = document.getElementById("acertar").value;
+  let data = new Date();
+  let dataFormatada =
+    data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
 
-    
+  var brDate = dataEntrega.split("-").reverse().join("/");
 
-    var brDate = dataEntrega.split('-').reverse().join('/');
+  // Informações da empresa
+  var nomeEmpresa = "Fare Foto";
+  var telefoneEmpresa = "(11) 95314-7703";
+  var enderecoEmpresa = "Rua Coronel Leme da Fonseca, 207 - Centro, Jundiaí-SP";
 
-    // Informações da empresa
-    var nomeEmpresa = 'Fare Foto';
-    var telefoneEmpresa = '(11) 95314-7703';
-    var enderecoEmpresa = 'Rua Coronel Leme da Fonseca, 207 - Centro, Jundiaí-SP';
+  function adicionarItem() {
+    var texto = document.getElementById("texto").value;
+    if (texto.trim() !== "") {
+      var lista = document.getElementById("lista");
+      var novoItem = document.createElement("li");
+      novoItem.innerHTML = "• " + texto;
+      lista.appendChild(novoItem);
+      document.getElementById("texto").value = "";
+    }
+  }
 
-    // Construir o conteúdo HTML do recibo com estilos
-    var conteudoRecibo = `<style>
+  // Construir o conteúdo HTML do recibo com estilos
+  var conteudoRecibo = `<style>
                             body {
                                 font-family: Arial, sans-serif;
                                 margin: 20px;
@@ -38,18 +48,15 @@ function imprimirPedido() {
                                 font-weight: bold;
                                 color: #333;
                             }
-                            div{
-                                margin: 2rem;
-                            }
                           </style>
                           
-                                <div style='font-weight: bolder;'>
+                              <div>
                               <div class="nome-empresa">${nomeEmpresa}</div>
                               <div class="telefone-empresa">${telefoneEmpresa}</div>
                               <div class="endereco-empresa">${enderecoEmpresa}</div>
                               
                               <div class="endereco-empresa">${dataFormatada}</div>
-                              <div class="pago">${pago}</div>
+                              <div class="pago">${acertar}</div>
                               <h3>Recibo de Pedido:</h3>
                               </div>
                               <p><strong>Nome do Cliente:</strong> ${nomeCliente}</p>
@@ -58,20 +65,22 @@ function imprimirPedido() {
                               <div class="endereco-empresa">${desc}</div>
                           `;
 
-    // Criar um elemento iframe
-    var iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
+  // Criar um elemento iframe
+  var iframe = document.createElement("iframe");
+  iframe.style.display = "none";
+  document.body.appendChild(iframe);
 
-    // Adicionar o conteúdo ao documento do iframe
-    iframe.contentDocument.write('<html><head><title>Recibo de Pedido</title></head><body>');
-    iframe.contentDocument.write(conteudoRecibo);
-    iframe.contentDocument.write('</body></html>');
-    iframe.contentDocument.close();
+  // Adicionar o conteúdo ao documento do iframe
+  iframe.contentDocument.write(
+    "<html><head><title>Recibo de Pedido</title></head><body>"
+  );
+  iframe.contentDocument.write(conteudoRecibo);
+  iframe.contentDocument.write("</body></html>");
+  iframe.contentDocument.close();
 
-    // Chamar a função de impressão no iframe
-    iframe.contentWindow.print();
+  // Chamar a função de impressão no iframe
+  iframe.contentWindow.print();
 
-    // Remover o iframe após a impressão
-    document.body.removeChild(iframe);
+  // Remover o iframe após a impressão
+  document.body.removeChild(iframe);
 }

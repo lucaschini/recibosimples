@@ -16,17 +16,15 @@
             <label for="telefone">Telefone:</label>
             <input type="tel" id="telefone" name="telefone" required>
 
-            <label for="dataEntrega">Data Prevista de Entrega:</label>
+            <label for="dataEntrega">Entrega:</label>
             <input type="date" id="dataEntrega" name="dataEntrega" required>
+            <input type="time" id="horaEntrega" name="horeEntrega" required>
 
             <label for="desc">Descrição:</label>
             <input type="text" id="desc" name="desc" required>
 
-            <label for="pago">Falta acertar:</label>
-            <input type="radio" id="pago" name="pago" required>
-            <!-- Só falta a lógica do pago -->
-            <label for="acertar">Valor a acertar:</label>
-            <input type="text" id="acertar" name="acertar" disabled required>
+            <label for="acertar">Valor a acertar ?</label>
+            <input type="text" id="acertar" name="acertar" >
 
 
             <button type="button" onclick="imprimirPedido()">Imprimir Recibo</button>
